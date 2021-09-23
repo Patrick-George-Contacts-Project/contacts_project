@@ -4,12 +4,11 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Contacts {
-
-    public void readFromFile(Path filePath) {
+public class Menu {
+    public void readFromFile(Path menuPath) {
         List<String> fileLines = new ArrayList<>();
         try {
-            fileLines = Files.readAllLines(filePath);
+            fileLines = Files.readAllLines(menuPath);
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
@@ -17,5 +16,4 @@ public class Contacts {
             System.out.println(line);
         }
     }
-
 }
