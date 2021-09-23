@@ -11,6 +11,8 @@ import java.util.Scanner;
 public class ContactsTest {
 
     public static void main(String[] args) {
+
+
         Path directoryPath = Paths.get("src/data");
         try {
             if (Files.notExists(directoryPath)) {
@@ -29,23 +31,9 @@ public class ContactsTest {
         System.out.printf("Enter choice> ");
 
         Contacts currentList = new Contacts();
-        do {
-            Scanner sc = new Scanner(System.in);
-            int userInput = sc.nextInt();
-          if(userInput == 1) {
-            load.showContacts();
-        } else if (userInput == 2) {
-            System.out.println("Enter new contact info: ");
-//            String newContact = sc.next();
-        } else if (userInput == 3){
-            System.out.println("Option 3");
-        } else if (userInput == 4) {
-            System.out.println("Option 4");
-        } else if (userInput == 5) {
-            System.out.println("Thanks for using Contact Keeper");
-        }
-        while (!(5).equals(userInput));
 
+        Options options = new Options();
+        options.optionsMenu();
 //
 //
 //

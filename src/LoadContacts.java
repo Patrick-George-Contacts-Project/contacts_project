@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class LoadContacts {
+//public ArrayList<String> currentContacts;
 
     public void showContacts() {
 
@@ -21,7 +22,7 @@ public class LoadContacts {
             ioe.printStackTrace();
         }
 
-        List<String> currentContacts = new ArrayList<>();
+       List<String> currentContacts = new ArrayList<>();
         try {
             currentContacts = Files.readAllLines(filePath);
         } catch (
