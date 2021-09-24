@@ -1,54 +1,47 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class Options extends LoadContacts{
+public class Options {
     public void optionsMenu() {
 
 
-        LoadContacts currentList = new LoadContacts();
+        Contacts contacts = new Contacts();
 
-        PrintMenu newMenu = new PrintMenu();
         Scanner sc = new Scanner(System.in);
 
         int userInput = sc.nextInt();
         do {
             if (userInput == 1) {
-                currentList.showContacts();
-                newMenu.printMenu();
-                userInput = sc.nextInt();
+                contacts.showContacts();
             } else if (userInput == 2) {
                 System.out.println("Enter new contact info: ");
                 sc.nextLine();
                 String newContact = sc.nextLine();
-                LoadContacts.currentContacts.add(newContact);
-                System.out.println(LoadContacts.currentContacts);
-
-                showContacts();
-
-                newMenu.printMenu();
-                userInput = sc.nextInt();
+                contacts.getCurrentContacts().add(newContact);
+                contacts.showContacts();
             } else if (userInput == 3) {
                 System.out.println("Input a contact name.");
                 sc.nextLine();
                 String contactName = sc.nextLine();
-                if(currentList.searchContact(contactName) == true) {
-                    System.out.println("Contact Exists");
-                } else {
+                List<String> matches = contacts.searchContact(contactName);
+                if (matches.isEmpty()) {
                     System.out.println("Contact Not Present");
+                } else {
+                    matches.forEach(match -> System.out.println(match));
                 }
                 System.out.println("Press Enter");
                 sc.nextLine();
-                newMenu.printMenu();
-                userInput = sc.nextInt();
             } else if (userInput == 4) {
-                System.out.println("Option 4");
-                newMenu.printMenu();
-                userInput = sc.nextInt();
+                System.out.println("Please enter the contact you want to remove");
+                sc.nextLine();
+                Integer contactNumber = sc.nextInt();
+                contacts.removeContact(contactNumber);
+                contacts.showContacts();
             } else if (userInput == 5) {
                 break;
             }
+            PrintMenu.printMenu();
+            userInput = sc.nextInt();
         } while (userInput != 5);
         System.out.println("Thanks for using Contact Keeper");
     }
