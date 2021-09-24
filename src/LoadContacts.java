@@ -8,9 +8,15 @@ import java.util.*;
 public class LoadContacts {
 //public ArrayList<String> currentContacts;
 
-    private String name;
-    public List<String> currentContacts = new ArrayList<>();
-
+    public String name;
+//    public static List<String> currentContacts;
+//        WHAT EVEN IS THIS CRAP
+    public static List<String> currentContacts = new ArrayList<>();
+        try {
+        List<String> currentContacts = Files.readAllLines(filePath);
+    } catch (IOException ioe) {
+        ioe.printStackTrace();
+    }
 
     public String getName() {
         return name;
@@ -27,10 +33,11 @@ public class LoadContacts {
     public void setCurrentContacts(List<String> currentContacts) {
         this.currentContacts = currentContacts;
     }
+   Path filePath = Paths.get("src/data", "contacts.txt");
 
     public void createContacts() {
 
-        Path filePath = Paths.get("src/data", "contacts.txt");
+
         try {
             if (Files.notExists(filePath)) {
                 Files.createFile(filePath);
