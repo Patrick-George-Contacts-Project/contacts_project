@@ -1,6 +1,6 @@
-public class CodedMenu {
-    public void menuButCOded() {
-        System.out.println("Would you like to choose another option?");
+public class PrintMenu {
+    public void printMenu() {
+        System.out.println("\nWould you like to choose another option?");
         System.out.println("1. View contacts.");
         System.out.println("2. Add a new contact.");
         System.out.println("3. Search a contact by name.");

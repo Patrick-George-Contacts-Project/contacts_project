@@ -1,44 +1,52 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Options extends LoadContacts{
     public void optionsMenu() {
-        LoadContacts load = new LoadContacts();
-        CodedMenu newMenu = new CodedMenu();
+
+
+        LoadContacts currentList = new LoadContacts();
+
+        PrintMenu newMenu = new PrintMenu();
         Scanner sc = new Scanner(System.in);
+
         int userInput = sc.nextInt();
-        while (userInput != 5) {
+        do {
             if (userInput == 1) {
-                load.showContacts();
-                newMenu.menuButCOded();
+                currentList.showContacts();
+                newMenu.printMenu();
                 userInput = sc.nextInt();
             } else if (userInput == 2) {
                 System.out.println("Enter new contact info: ");
+                sc.nextLine();
+                String newContact = sc.nextLine();
+
+                showContacts();
+
+                newMenu.printMenu();
+                userInput = sc.nextInt();
             } else if (userInput == 3) {
-//                Path filePath = Paths.get("src/data", "contacts.txt");
-////                List<String> currentContacts = new ArrayList<>();
-//                try {
-//                    currentContacts = Files.readAllLines(filePath);
-//                } catch (
-//                        IOException ioe) {
-//                    ioe.printStackTrace();
-                }
                 System.out.println("Input a contact name.");
+                sc.nextLine();
                 String contactName = sc.nextLine();
-                boolean ans =  currentContacts.contains(contactName);
-                if (ans){
-                    System.out.println(cu);
+                if(currentList.searchContact(contactName) == true) {
+                    System.out.println("Contact Exists");
+                } else {
+                    System.out.println("Contact Not Present");
                 }
+                System.out.println("Press Enter");
+                sc.nextLine();
+                newMenu.printMenu();
+                userInput = sc.nextInt();
             } else if (userInput == 4) {
                 System.out.println("Option 4");
+                newMenu.printMenu();
+                userInput = sc.nextInt();
             } else if (userInput == 5) {
-                System.out.println("Thanks for using Contact Keeper");
+                break;
             }
-        }
+        } while (userInput != 5);
+        System.out.println("Thanks for using Contact Keeper");
     }
 }

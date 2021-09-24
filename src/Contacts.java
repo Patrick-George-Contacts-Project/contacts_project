@@ -18,4 +18,13 @@ public class Contacts {
         }
     }
 
+    private void currentContacts(Path filePath) {
+        List<String> contacts = new ArrayList<>();
+        try {
+            contacts = Files.readAllLines(filePath);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+
 }
