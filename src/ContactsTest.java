@@ -22,15 +22,19 @@ public class ContactsTest {
             ioe.printStackTrace();
         }
 
-        LoadContacts load = new LoadContacts();
+        LoadContacts contacts = new LoadContacts();
+
+        LoadContacts create = new LoadContacts();
+        create.createContacts();
 
 
         Path menuPath = Paths.get("src/data", "menu.txt");
         Menu menu = new Menu();
         menu.readFromFile(menuPath);
+
         System.out.printf("Enter choice> ");
 
-        Contacts currentList = new Contacts();
+
 
         Options options = new Options();
         options.optionsMenu();
