@@ -1,11 +1,15 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Menu {
-    public void readFromFile(Path menuPath) {
+public class Logo {
+
+
+    public static void printLogo() {
+        Path menuPath = Paths.get("src/data", "menu.txt");
         List<String> fileLines = new ArrayList<>();
         try {
             fileLines = Files.readAllLines(menuPath);

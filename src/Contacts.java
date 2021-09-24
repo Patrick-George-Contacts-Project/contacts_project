@@ -1,30 +1,71 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.*;
 
 public class Contacts {
 
-    public void readFromFile(Path filePath) {
-        List<String> fileLines = new ArrayList<>();
+
+    private List<String> currentContacts;
+
+    public Contacts() {
+        createContacts();
+    }
+
+    public List<String> getCurrentContacts() {
+        return currentContacts;
+    }
+
+    public void createContacts() {
+        Path directoryPath = Paths.get("src/data");
         try {
-            fileLines = Files.readAllLines(filePath);
+            if (Files.notExists(directoryPath)) {
+                Files.createDirectories(directoryPath);
+            }
+        } catch(IOException ioe) {
+            ioe.printStackTrace();
+        }
+        Path filePath = Paths.get("src/data", "contacts.txt");
+        try {
+            if (Files.notExists(filePath)) {
+                Files.createFile(filePath);
+            }
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-        for (String line : fileLines) {
-            System.out.println(line);
-        }
-    }
-
-    private void currentContacts(Path filePath) {
-        List<String> contacts = new ArrayList<>();
         try {
-            contacts = Files.readAllLines(filePath);
+            currentContacts = Files.readAllLines(filePath);
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
+
     }
 
-}
+    public void showContacts() {
+        System.out.println("Name\t\t | Phone Number");
+        System.out.println("========================");
+        for (int i = 0; i < currentContacts.size(); i++) {
+            System.out.println((i + 1) + ": " + currentContacts.get(i));
+        }
+
+    }
+
+    public List<String> searchContact(String userInput) {
+        List<String> matches =new ArrayList<>();
+        for (String contact : currentContacts) {
+            if (contact.toLowerCase().contains(userInput.toLowerCase())) {
+                matches.add(contact);
+            }
+        }
+        return matches;
+    }
+
+    public void removeContact(Integer contactNumber) {
+        currentContacts.remove(contactNumber - 1);
+
+    }
+
+  }
+
