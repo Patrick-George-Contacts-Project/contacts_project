@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,6 +22,8 @@ public class Options extends LoadContacts{
                 System.out.println("Enter new contact info: ");
                 sc.nextLine();
                 String newContact = sc.nextLine();
+                LoadContacts.currentContacts.add(newContact);
+                System.out.println(LoadContacts.currentContacts);
 
                 showContacts();
 

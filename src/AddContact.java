@@ -1,4 +1,4 @@
-public class AddContact {
+public class AddContact extends LoadContacts{
     public String contactInfo;
 
     public AddContact(String contactInfo) {
