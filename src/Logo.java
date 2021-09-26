@@ -9,7 +9,7 @@ public class Logo {
 
 
     public static void printLogo() {
-        Path menuPath = Paths.get("src/data", "menu.txt");
+        Path menuPath = Paths.get("src/data", "logo.txt");
         List<String> fileLines = new ArrayList<>();
         try {
             fileLines = Files.readAllLines(menuPath);

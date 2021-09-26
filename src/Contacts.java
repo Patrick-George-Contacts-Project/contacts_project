@@ -45,7 +45,7 @@ public class Contacts {
     }
 
     public List<String> searchContact(String userInput) {
-        List<String> matches =new ArrayList<>();
+        List<String> matches = new ArrayList<>();
         for (String contact : currentContacts) {
             if (contact.toLowerCase().contains(userInput.toLowerCase())) {
                 matches.add(contact);
