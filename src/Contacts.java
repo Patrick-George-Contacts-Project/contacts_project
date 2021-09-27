@@ -20,22 +20,14 @@ public class Contacts {
 
     public void createContacts() {
         Path directoryPath = Paths.get("src/data");
+        Path filePath = Paths.get("src/data", "contacts.txt");
         try {
             if (Files.notExists(directoryPath)) {
                 Files.createDirectories(directoryPath);
             }
-        } catch(IOException ioe) {
-            ioe.printStackTrace();
-        }
-        Path filePath = Paths.get("src/data", "contacts.txt");
-        try {
             if (Files.notExists(filePath)) {
                 Files.createFile(filePath);
             }
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-        try {
             currentContacts = Files.readAllLines(filePath);
         } catch (IOException ioe) {
             ioe.printStackTrace();
@@ -44,7 +36,7 @@ public class Contacts {
     }
 
     public void showContacts() {
-        System.out.println("Name\t\t | Phone Number");
+        System.out.println("\nName\t\t | Phone Number");
         System.out.println("========================");
         for (int i = 0; i < currentContacts.size(); i++) {
             System.out.println((i + 1) + ": " + currentContacts.get(i));
@@ -53,7 +45,7 @@ public class Contacts {
     }
 
     public List<String> searchContact(String userInput) {
-        List<String> matches =new ArrayList<>();
+        List<String> matches = new ArrayList<>();
         for (String contact : currentContacts) {
             if (contact.toLowerCase().contains(userInput.toLowerCase())) {
                 matches.add(contact);
