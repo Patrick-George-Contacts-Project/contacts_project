@@ -7,7 +7,6 @@ import java.util.*;
 
 public class Contacts {
 
-
     private List<String> currentContacts;
 
     public Contacts() {

@@ -1,7 +1,5 @@
 public class PrintMenu {
 
-
-
     public static void printMenu() {
         System.out.println("\n📖 Main Menu");
         System.out.println(Colors.ANSI_BLUE + "1. " + Colors.ANSI_CYAN + "View contacts." + Colors.ANSI_RESET);

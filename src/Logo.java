@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Logo {
 
-
     public static void printLogo() {
         Path menuPath = Paths.get("src/data", "logo.txt");
         List<String> fileLines = new ArrayList<>();
