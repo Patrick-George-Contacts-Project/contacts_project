@@ -13,13 +13,15 @@ public class Contacts {
         createContacts();
     }
 
+    Path directoryPath = Paths.get("src/data");
+    Path filePath = Paths.get("src/data", "contacts.txt");
+
     public List<String> getCurrentContacts() {
         return currentContacts;
     }
 
     public void createContacts() {
-        Path directoryPath = Paths.get("src/data");
-        Path filePath = Paths.get("src/data", "contacts.txt");
+
         try {
             if (Files.notExists(directoryPath)) {
                 Files.createDirectories(directoryPath);
@@ -53,9 +55,17 @@ public class Contacts {
         return matches;
     }
 
-    public void removeContact(Integer contactNumber) {
+    public void removeContact(int contactNumber) {
         currentContacts.remove(contactNumber - 1);
 
+    }
+
+    public void saveContacts() {
+        try {
+            Files.write(filePath, currentContacts);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
     }
 
   }

@@ -25,7 +25,7 @@ public class Options {
             }
         } while (userInput != 5);
         System.out.println(Colors.ANSI_PURPLE + "Thanks for using Contact Keeper!!!!" + Colors.ANSI_RESET);
-
+        contacts.saveContacts();
     }
 
     private void deleteContact() {
@@ -53,9 +53,11 @@ public class Options {
     }
 
     private void addContact() {
-        System.out.println("Enter new contact info: ");
+        System.out.println("Enter new contact name: ");
         String newContact = sc.nextLine();
-        contacts.getCurrentContacts().add(newContact);
+        System.out.println("Enter new phone number ");
+        String newNumber = sc.nextLine();
+        contacts.getCurrentContacts().add(newContact + " | " + newNumber);
         contacts.showContacts();
     }
 }
