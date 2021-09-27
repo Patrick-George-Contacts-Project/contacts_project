@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,14 +24,14 @@ public class Options {
                 deleteContact();
             }
         } while (userInput != 5);
-        System.out.println("\u001B[31mThanks for using Contact Keeper!!!!\u001B[0m");
+        System.out.println(Colors.ANSI_PURPLE + "Thanks for using Contact Keeper!!!!" + Colors.ANSI_RESET);
 
     }
 
     private void deleteContact() {
         System.out.println("Please enter the number for the contact you want to remove: ");
         int contactNumber = sc.nextInt();
-        if(contactNumber < contacts.getCurrentContacts().size()) {
+        if(contactNumber < contacts.getCurrentContacts().size() + 1 ) {
             contacts.removeContact(contactNumber);
         } else {
             System.out.println("Contact not found.");
