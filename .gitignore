@@ -1,4 +1,5 @@
 out
 .idea
 *.iml
+src/data/contacts.txt
 contacts.txt
